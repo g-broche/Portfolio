@@ -1,0 +1,59 @@
+@use '../../../abstract/' as *;
+
+.portfolio {
+    width: 100%;
+    padding: $padding-in-section;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap-in-section;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $gap-in-subsection;
+    }
+
+
+    .learning-projects {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-in-subsection;
+
+        &__title {
+            text-align: center;
+        }
+
+        &__container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+    }
+
+    &__main {
+        width: 100%;
+    }
+
+    &__footer {
+        margin-top: $margin-section-footer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+
+        a {
+            height: $hyperlink-button-height;
+            width: $hyperlink-button-width;
+            border-radius: $hyperlink-button-height/2;
+            background-color: $hyperlink-button-background;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $color-light-font;
+        }
+    }
+
+}

@@ -1,0 +1,23 @@
+@use '../../../abstract/' as *;
+
+.portfolio-article {
+    width: 30%;
+    padding: $padding-article;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap-in-subsection ;
+
+    &__header {}
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-in-subsection;
+
+        h4 {
+            text-align: center;
+        }
+    }
+}

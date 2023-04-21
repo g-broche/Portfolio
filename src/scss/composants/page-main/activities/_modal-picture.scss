@@ -1,0 +1,13 @@
+@use '../../../abstract/' as *;
+
+.modal-picture {
+    position: fixed;
+    width: 75vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    picture {
+        border: 16px groove $color-picture-border;
+    }
+}
