@@ -1,0 +1,14 @@
+@use '../../../abstract/' as *;
+
+#picture-grid {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 30px;
+    column-gap: 25px;
+
+    picture {
+        border: 6px groove $color-picture-border;
+    }
+}

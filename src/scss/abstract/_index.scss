@@ -1,4 +1,5 @@
-@forward '../src/scss/abstract/reset.scss';
-@forward '../src/scss/abstract/variables.scss';
-@forward '../src/scss/abstract/mixins.scss';
-@forward '../src/scss/abstract/fonts.scss';
+@forward './reset.scss';
+@forward './variables.scss';
+@forward './mixins.scss';
+@forward './fonts.scss';
+@forward './common.scss';

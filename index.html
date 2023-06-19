@@ -1,41 +1,17 @@
 <html>
 
 <head>
-    <title>self introduction</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="src/styles.scss" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- Canonical -->
-    <link rel="canonical" href="https://www.example.com">
-    <!-- Robots -->
-    <meta name="robots" content="noindex, nofollow">
-    <!-- Device -->
-    <!-- <meta name="viwport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
+    <link rel="stylesheet" type="text/css" href="src/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
-    <meta name="format-detection" content="telephone=no">
     <!-- Title -->
-    <title>Benjamin Code Scalpel</title>
+    <title>self introduction</title>
     <!-- Description -->
-    <meta name="description" content="Home description.">
-    <!-- Social -->
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Quick Parcel Project — Home">
-    <meta name="twitter:description" content="Home description.">
-    <meta name="twitter:image" content="#">
-    <!-- Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.example.com">
-    <meta property="og:title" content="Quick Parcel Project — Home">
-    <meta property="og:description" content="Home description.">
-    <meta property="og:image" content="#">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta name="description" content="self introduction">
     <!-- Favicon -->
     <meta name="theme-color" content="#fff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&family=Tenor+Sans&display=swap"
         rel="stylesheet">
 </head>
@@ -158,42 +134,48 @@
                 <h2>mes photos</h2>
             </header>
             <main class="activities__main">
-                <div class="picture-grid">
-                    <picture>
-                        <source srcset="./assets/pictures/bee-sunflower_480.webp" media="(min-width: 1080px)" />
-                        <img src="./assets/pictures/bee-sunflower_240.webp" alt="abeille en vol" />
+                <div id="picture-grid">
+                    <!-- <picture>
+                        <source srcset="./src/assets/pictures/bee-sunflower_480.webp" media="(min-width: 1080px)" />
+                        <img src="./src/assets/pictures/bee-sunflower_240.webp" alt="abeille en vol" />
                     </picture>
 
                     <picture>
-                        <source srcset="./assets/pictures/crabier_480.webp" media="(min-width: 1080px)" />
-                        <img src="./assets/pictures/crabier_240.webp" alt="crabier chevelu" />
+                        <source srcset="./src/assets/pictures/crabier_480.webp" media="(min-width: 1080px)" />
+                        <img src="./src/assets/pictures/crabier_240.webp" alt="crabier chevelu" />
                     </picture>
 
                     <picture>
-                        <source srcset="./assets/pictures/fox_480.webp" media="(min-width: 1080px)" />
-                        <img src="./assets/pictures/fox_240.webp" alt="renard" />
+                        <source srcset="./src/assets/pictures/fox_480.webp" media="(min-width: 1080px)" />
+                        <img src="./src/assets/pictures/fox_240.webp" alt="renard" />
                     </picture>
 
                     <picture>
-                        <source srcset="./assets/pictures/hermine_480.webp" media="(min-width: 1080px)" />
-                        <img src="./assets/pictures/hermine_240.webp" alt="hermine" />
+                        <source srcset="./src/assets/pictures/hermine_480.webp" media="(min-width: 1080px)" />
+                        <img src="./src/assets/pictures/hermine_240.webp" alt="hermine" />
                     </picture>
 
                     <picture>
-                        <source srcset="./assets/pictures/libellule_480.webp" media="(min-width: 1080px)" />
-                        <img src="./assets/pictures/libellule_240.webp" alt="libellule" />
+                        <source srcset="./src/assets/pictures/libellule_480.webp" media="(min-width: 1080px)" />
+                        <img src="./src/assets/pictures/libellule_240.webp" alt="libellule" />
                     </picture>
 
                     <picture>
-                        <source srcset="./assets/pictures/marmottes_480.webp" media="(min-width: 1080px)" />
-                        <img src="./assets/pictures/marmottes_240.webp" alt="marmottes" />
-                    </picture>
+                        <source srcset="./src/assets/pictures/marmottes_480.webp" media="(min-width: 1080px)" />
+                        <img src="./src/assets/pictures/marmottes_240.webp" alt="marmottes" />
+                    </picture> -->
                 </div>
-                <section class="modal-picture">
-                    <picture>
-                        <source srcset="./assets/pictures/crabier_720.webp" media="(min-width: 1080px)" />
-                        <img src="./assets/pictures/crabier_720.webp" alt="crabier" />
+                <section id="modal-picture-container" class="modal-picture">
+                    <picture id="modal-picture-img" class="modal-picture__img">
+                        <source srcset="./src/assets/pictures/crabier_720.webp" media="(min-width: 1080px)" />
+                        <img src="./src/assets/pictures/crabier_720.webp" alt="crabier" />
                     </picture>
+                    <button id="modal-picture-previous"
+                        class="arrow modal-picture__arrow-left modal-picture__arrow-left--active">&#10094;</button>
+                    <button id="modal-picture-next"
+                        class="arrow modal-picture__arrow-right modal-picture__arrow-right--active">&#10095;</button>
+                    <button id="modal-picture-close"
+                        class="modal-picture__close modal-picture__close--active">&#10006;</button>
                 </section>
             </main>
             <footer class="activities__footer">
@@ -220,9 +202,8 @@
         </footer>
     </footer>
 
-    <script type="module" src="src/index.ts"></script>
+
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script src="./src/js/script.js"></script>
+<script type="module" src="./src/ts/index.js"></script>

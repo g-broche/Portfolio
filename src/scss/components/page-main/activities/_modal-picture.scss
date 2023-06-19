@@ -1,0 +1,54 @@
+@use '../../../abstract/' as *;
+
+.modal-picture {
+    position: fixed;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__img {
+        border: 16px groove $color-picture-border;
+    }
+
+    .arrow {
+        height: calc($slider-navigation-size + 5px);
+        width: calc($slider-navigation-size + 5px);
+        border-radius: 50%;
+        background-color: $color-bg-slider-nav;
+        color: $color-slider-nav;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $slider-navigation-size;
+        position: absolute;
+        top: 50%;
+    }
+
+    &__arrow-left {
+        left: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    &__arrow-right {
+
+        right: 0;
+        transform: translate(50%, -50%);
+    }
+
+    &__close {
+        height: $slider-close-size;
+        width: $slider-close-size;
+        border-radius: 50%;
+        background-color: $color-bg-slider-close;
+        color: $color-slider-close;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $slider-close-size;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(100%, -100%);
+    }
+}

@@ -1,0 +1,9 @@
+@use '../components/page-header/' as *;
+@use '../components/page-main/' as *;
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
