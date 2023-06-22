@@ -1,16 +1,23 @@
 /* ********** IMPORTS ********** */
 import { Photo } from './interfaces/model';
 
-/* ********** DATABASE ********** */
+/* ********** DATABASE AND HELPER FUNCTION********** */
+const pathToImg = 'src/assets/pictures/';
+
+function getImagePath(fileNamePattern: string): string {
+    const imagePath = (pathToImg + fileNamePattern);
+    return imagePath;
+}
+
 const PhotoCollection: Photo[] = [
     {
         id: 1,
         title: "Bee and sunflower",
         fileNames: {
-            xsmall: "bee-sunflower_160.webp",
-            small: "bee-sunflower_240.webp",
-            medium: "bee-sunflower_480.webp",
-            large: "bee-sunflower_720.webp",
+            xsmall: getImagePath("bee-sunflower_160.webp"),
+            small: getImagePath("bee-sunflower_240.webp"),
+            medium: getImagePath("bee-sunflower_480.webp"),
+            large: getImagePath("bee-sunflower_720.webp"),
         },
         tag: ["abeille", "tournesol"]
     },
@@ -18,10 +25,10 @@ const PhotoCollection: Photo[] = [
         id: 2,
         title: "Crabier chevelu",
         fileNames: {
-            xsmall: "crabier_160.webp",
-            small: "crabier_240.webp",
-            medium: "crabier_480.webp",
-            large: "crabier_720.webp",
+            xsmall: getImagePath("crabier_160.webp"),
+            small: getImagePath("crabier_240.webp"),
+            medium: getImagePath("crabier_480.webp"),
+            large: getImagePath("crabier_720.webp"),
         },
         tag: ["crabier"]
     },
@@ -29,10 +36,10 @@ const PhotoCollection: Photo[] = [
         id: 3,
         title: "Renard du soir",
         fileNames: {
-            xsmall: "fox_160.webp",
-            small: "fox_240.webp",
-            medium: "fox_480.webp",
-            large: "fox_720.webp",
+            xsmall: getImagePath("fox_160.webp"),
+            small: getImagePath("fox_240.webp"),
+            medium: getImagePath("fox_480.webp"),
+            large: getImagePath("fox_720.webp"),
         },
         tag: ["renard"]
     },
@@ -40,10 +47,10 @@ const PhotoCollection: Photo[] = [
         id: 4,
         title: "Hermine",
         fileNames: {
-            xsmall: "hermine_160.webp",
-            small: "hermine_240.webp",
-            medium: "hermine_480.webp",
-            large: "hermine_720.webp",
+            xsmall: getImagePath("hermine_160.webp"),
+            small: getImagePath("hermine_240.webp"),
+            medium: getImagePath("hermine_480.webp"),
+            large: getImagePath("hermine_720.webp"),
         },
         tag: ["hermine"]
     },
@@ -51,10 +58,10 @@ const PhotoCollection: Photo[] = [
         id: 5,
         title: "Libellule en vol",
         fileNames: {
-            xsmall: "libellule_160.webp",
-            small: "libellule_240.webp",
-            medium: "libellule_480.webp",
-            large: "libellule_720.webp",
+            xsmall: getImagePath("libellule_160.webp"),
+            small: getImagePath("libellule_240.webp"),
+            medium: getImagePath("libellule_480.webp"),
+            large: getImagePath("libellule_720.webp"),
         },
         tag: ["libellule"]
     },
@@ -62,10 +69,10 @@ const PhotoCollection: Photo[] = [
         id: 6,
         title: "Marmottes du Taillefer",
         fileNames: {
-            xsmall: "marmottes_160.webp",
-            small: "marmottes_240.webp",
-            medium: "marmottes_480.webp",
-            large: "marmottes_720.webp",
+            xsmall: getImagePath("marmottes_160.webp"),
+            small: getImagePath("marmottes_240.webp"),
+            medium: getImagePath("marmottes_480.webp"),
+            large: getImagePath("marmottes_720.webp"),
         },
         tag: ["marmottes"]
     },
@@ -75,43 +82,144 @@ const PhotoCollection: Photo[] = [
 
 const pictureGrid = document.getElementById("picture-grid");
 const modalPictureContainer = document.getElementById("modal-picture-container");
+const modalPreviousButton = document.getElementById("modal-picture-previous");
+const modalNextButton = document.getElementById("modal-picture-next");
+const modalCloseButton = document.getElementById("modal-picture-close");
 const modalPicture = document.getElementById("modal-picture-img");
-const modalPrevious = document.getElementById("modal-picture-previous");
-const modalNext = document.getElementById("modal-picture-next");
-const modalClose = document.getElementById("modal-picture-close");
+
+const modalOverlay = document.getElementById("modal-overlay");
 
 /* ********** LOGIC CONST AND VARIABLES ********** */
-const pathToImg = './src/assets/pictures/';
 
 
 /* ********** EVENT LISTENERS ********** */
 
+modalCloseButton?.addEventListener("click", hideModalPictureContainer);
+modalOverlay?.addEventListener("click", hideModalPictureContainer);
+
+modalNextButton?.addEventListener("click", toNextPhoto);
+modalPreviousButton?.addEventListener("click", toPreviousPhoto);
 
 /* ********** FUNCTIONS ********** */
 
-function createOnePicture(Image: Photo): Element {
+function createOneThumbnail(image: Photo): Element {
     let newPictureContainer = document.createElement("picture");
-    let sourceLarge = document.createElement("source");
+    let sourcemedium = document.createElement("source");
+    let sourcesmall = document.createElement("source");
     let imgDefaut = document.createElement("img");
 
-    sourceLarge.setAttribute("srcset", pathToImg + Image.fileNames.large);
-    sourceLarge.setAttribute("media", "(min-width: 1080px)");
-    sourceLarge.setAttribute("alt", Image.title);
+    newPictureContainer.classList.add("thumbnail")
+    newPictureContainer.dataset.id = String(image.id);
+    newPictureContainer.addEventListener("click", (event) => { displayModalPicture(event) })
 
-    imgDefaut.setAttribute("src", pathToImg + Image.fileNames.small);
-    imgDefaut.setAttribute("alt", Image.title);
+    sourcemedium.setAttribute("srcset", image.fileNames.medium);
+    sourcemedium.setAttribute("media", "(min-width: 1080px)");
+    sourcemedium.setAttribute("alt", image.title);
 
-    newPictureContainer.append(sourceLarge, imgDefaut);
+    sourcesmall.setAttribute("srcset", image.fileNames.small);
+    sourcesmall.setAttribute("media", "(min-width: 720px)");
+    sourcesmall.setAttribute("alt", image.title);
+
+    imgDefaut.setAttribute("src", image.fileNames.xsmall);
+    imgDefaut.setAttribute("alt", image.title);
+
+    newPictureContainer.append(sourcemedium, sourcesmall, imgDefaut);
     return newPictureContainer;
 }
 
 function displayPictures() {
     PhotoCollection.forEach(photo => {
-        pictureGrid?.appendChild(createOnePicture(photo));
+        pictureGrid?.appendChild(createOneThumbnail(photo));
     });
 }
 
+// imageToLoad.onload = async () => {
+//     showModalPictureContainer();
+//     imageToLoad.onload = null;
+// }
+
+async function displayModalPicture(event: MouseEvent) {
+    let sourceImage = getSourceImage(event)
+    if (sourceImage) {
+        if (modalPicture?.dataset.id && sourceImage.id === parseInt(modalPicture?.dataset.id)) {
+            showModalPictureContainer()
+        } else {
+            setModalPictureContent(sourceImage)
+            const imageToLoad = modalPicture?.querySelector(".source-main") as HTMLImageElement;
+            await (loadImage(imageToLoad)).then(() => { showModalPictureContainer(); imageToLoad.onload = null; })
+        }
+    }
+}
+async function loadImage(elem: HTMLImageElement) {
+    return new Promise<HTMLImageElement>((resolve, reject) => {
+        elem.onload = () => (resolve(elem));
+        elem.onerror = reject;
+    })
+}
+
+function getSourceImage(event: MouseEvent) {
+    let targetImage = event.target as HTMLElement;
+    let imageId = targetImage.parentElement?.dataset.id;
+    return findImageFromId(imageId ? parseInt(imageId) : null);
+}
+
+function setModalPictureContent(image: Photo): void {
+
+    if (modalPicture) { modalPicture.dataset.id = String(image.id) };
+    modalPicture?.querySelector(".source-main")?.setAttribute("srcset", image.fileNames.large)
+    modalPicture?.querySelector(".source-medium")?.setAttribute("srcset", image.fileNames.medium)
+    modalPicture?.querySelector(".source-small")?.setAttribute("src", image.fileNames.small)
+}
+
+function findImageFromId(id: number | null): Photo | null {
+    const newMainImage = (id !== null ? PhotoCollection.find(photo => photo.id == id) : null);
+    return (newMainImage ? newMainImage : null);
+}
+
+function hideModalPictureContainer() {
+    modalPictureContainer?.classList.remove("visible");
+    modalOverlay?.classList.remove("visible");
+    modalPictureContainer?.classList.add("hidden");
+    modalOverlay?.classList.add("hidden");
+    console.log(modalOverlay)
+}
+
+function showModalPictureContainer() {
+    modalPictureContainer?.classList.remove("hidden");
+    modalOverlay?.classList.remove("hidden");
+    modalPictureContainer?.classList.add("visible");
+    modalOverlay?.classList.add("visible");
+}
+
+function toNextPhoto() {
+    let imageId = getIdFromModalPicture()
+    if (imageId) {
+        let nextPhoto = getNextPhotoFromCurrent(parseInt(imageId))
+        if (nextPhoto) { setModalPictureContent(nextPhoto) }
+    }
+}
+function toPreviousPhoto() {
+    let imageId = getIdFromModalPicture()
+    if (imageId) {
+        let previousPhoto = getPreviousPhotoFromCurrent(parseInt(imageId))
+        if (previousPhoto) { setModalPictureContent(previousPhoto) }
+    }
+}
+
+function getIdFromModalPicture(): string | null {
+    return (modalPicture?.dataset.id ? modalPicture.dataset.id : null);
+}
+function getNextPhotoFromCurrent(currentId: number): Photo | null {
+    let currentIndex = PhotoCollection.findIndex((photo) => photo.id === currentId);
+    let nextIndex = (currentIndex < PhotoCollection.length - 1 ? currentIndex + 1 : 0);
+    return PhotoCollection[nextIndex];
+}
+
+function getPreviousPhotoFromCurrent(currentId: number): Photo | null {
+    let currentIndex = PhotoCollection.findIndex((photo) => photo.id === currentId);
+    let previousIndex = (currentIndex > 0 ? (currentIndex - 1) : (PhotoCollection.length - 1));
+    return PhotoCollection[previousIndex];
+}
 
 /* ********** Initialization ********** */
-// displayPictures()
-(console.log("okay!"));
+displayPictures();

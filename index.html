@@ -135,45 +135,17 @@
             </header>
             <main class="activities__main">
                 <div id="picture-grid">
-                    <!-- <picture>
-                        <source srcset="./src/assets/pictures/bee-sunflower_480.webp" media="(min-width: 1080px)" />
-                        <img src="./src/assets/pictures/bee-sunflower_240.webp" alt="abeille en vol" />
-                    </picture>
-
-                    <picture>
-                        <source srcset="./src/assets/pictures/crabier_480.webp" media="(min-width: 1080px)" />
-                        <img src="./src/assets/pictures/crabier_240.webp" alt="crabier chevelu" />
-                    </picture>
-
-                    <picture>
-                        <source srcset="./src/assets/pictures/fox_480.webp" media="(min-width: 1080px)" />
-                        <img src="./src/assets/pictures/fox_240.webp" alt="renard" />
-                    </picture>
-
-                    <picture>
-                        <source srcset="./src/assets/pictures/hermine_480.webp" media="(min-width: 1080px)" />
-                        <img src="./src/assets/pictures/hermine_240.webp" alt="hermine" />
-                    </picture>
-
-                    <picture>
-                        <source srcset="./src/assets/pictures/libellule_480.webp" media="(min-width: 1080px)" />
-                        <img src="./src/assets/pictures/libellule_240.webp" alt="libellule" />
-                    </picture>
-
-                    <picture>
-                        <source srcset="./src/assets/pictures/marmottes_480.webp" media="(min-width: 1080px)" />
-                        <img src="./src/assets/pictures/marmottes_240.webp" alt="marmottes" />
-                    </picture> -->
                 </div>
-                <section id="modal-picture-container" class="modal-picture">
+                <section id="modal-picture-container" class="modal-picture hidden">
                     <picture id="modal-picture-img" class="modal-picture__img">
-                        <source srcset="./src/assets/pictures/crabier_720.webp" media="(min-width: 1080px)" />
-                        <img src="./src/assets/pictures/crabier_720.webp" alt="crabier" />
+                        <source class="source-small modal" srcset="" media="(max-width: 720px)" />
+                        <source class="source-medium" srcset="" media="(max-width: 1080px)" />
+                        <img class="source-main" src="" alt="" />
                     </picture>
                     <button id="modal-picture-previous"
                         class="arrow modal-picture__arrow-left modal-picture__arrow-left--active">&#10094;</button>
                     <button id="modal-picture-next"
-                        class="arrow modal-picture__arrow-right modal-picture__arrow-right--active">&#10095;</button>
+                        class="arrow modal-picture__arrow-right modal-picture__arrow-right--active">&#10094;</button>
                     <button id="modal-picture-close"
                         class="modal-picture__close modal-picture__close--active">&#10006;</button>
                 </section>
@@ -201,9 +173,8 @@
             </ul>
         </footer>
     </footer>
-
-
+    <div id="modal-overlay" class="hidden"></div>
 </body>
 
 </html>
-<script type="module" src="./src/ts/index.js"></script>
+<script type="module" src="./src/ts/index.ts"></script>
