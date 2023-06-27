@@ -21,26 +21,38 @@
     <header id="page-header" class="page-header">
         <nav class="header-nav">
             <ul>
-                <li>introduction</li>
-                <li>portfolio</li>
-                <li>photo</li>
-                <li>contact</li>
+                <a href="#introduction">
+                    <li>Introduction</li>
+                </a>
+                <a href="#portfolio">
+                    <li>Portfolio</li>
+                </a>
+                <a href="#about">
+                    <li>A propos</li>
+                </a>
+                <a href="#activities">
+                    <li>Photos</li>
+                </a>
             </ul>
         </nav>
     </header>
 
     <main id="page-main" class="page-main">
         <section id="introduction" class="introduction">
-            <picture>
-                <img src="" alt="photo">
-            </picture>
             <main class="introduction__main">
-                <h1>Lorem ipsum dolor sit.</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime natus, magnam voluptas magni eius
-                    quia tenetur quidem, quis dolore neque eaque numquam labore. Aliquam harum ut blanditiis debitis
-                    voluptate nostrum.</p>
-                <a class="introduction__main__link">Portfolio link</a>
+                <picture>
+                    <img src="" alt="photo">
+                </picture>
+                <div class="introduction__text">
+                    <h1>Lorem ipsum dolor sit.</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime natus, magnam voluptas magni
+                        eius
+                        quia tenetur quidem, quis dolore neque eaque numquam labore. Aliquam harum ut blanditiis debitis
+                        voluptate nostrum.</p>
+                </div>
             </main>
+            <footer><a class="introduction__link" href="#portfolio"><button class="inner-link downward">Portfolio
+                        link</button></a></footer>
 
         </section>
         <section id="portfolio" class="portfolio">
@@ -56,16 +68,15 @@
                         <article class="portfolio-article">
                             <header class="portfolio-article__header">
                                 <picture>
-                                    <img src="" alt="project-image">
+                                    <img src="src/assets/projects/minigames/MainPageUI.webp" alt="project-image">
                                 </picture>
                             </header>
                             <main class="portfolio-article__main">
-                                <h4>projet A</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel fuga, eaque sed
-                                    autem,
-                                    amet corporis delectus dicta rerum laboriosam alias quibusdam velit non hic
-                                    voluptatem,
-                                    laborum vitae quaerat quia.</p>
+                                <h4>Site de jeux</h4>
+                                <p>Premier projet assez conséquent durant la formation visant découvrir les animations
+                                    en CSS et a développer un mini jeu en JS.
+                                </p>
+                                <a href="minigames.html"><button class="outer-link">En savoir plus</button></a>
                             </main>
                         </article>
 
@@ -105,7 +116,7 @@
             </main>
             <footer class="portfolio__footer">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, mollitia.</p>
-                <a>learn more about me</a>
+                <a href="#about"><button class="inner-link downward">Learn more about me</button></a>
             </footer>
         </section>
 
@@ -125,7 +136,7 @@
             </main>
             <footer class="about__footer">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, mollitia.</p>
-                <a>mes photos</a>
+                <a href="#activities"><button class="inner-link downward">Mes photos</button></a>
             </footer>
         </section>
 
@@ -151,7 +162,7 @@
                 </section>
             </main>
             <footer class="activities__footer">
-
+                <a href="#page-header"><button class="inner-link upward">Go to top</button></a>
             </footer>
         </section>
     </main>

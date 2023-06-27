@@ -1,9 +1,9 @@
 $font-size-common: 20px;
-$font-size-nav: $font-size-common*1.25;
-$font-h1: $font-size-common*2 ;
-$font-h2: $font-size-common*1.75;
-$font-h3: $font-size-common*1.5;
-$font-h4: $font-size-common*1.25;
+$font-size-nav: calc($font-size-common*1.25);
+$font-h1: calc($font-size-common*2);
+$font-h2: calc($font-size-common*1.75);
+$font-h3: calc($font-size-common*1.5);
+$font-h4: calc($font-size-common*1.25);
 $font-base: 'Fanwood Text';
 $font-title: 'Tenor Sans';
 
@@ -17,4 +17,22 @@ h2,
 h3,
 h4 {
     font-family: $font-title;
+}
+
+h1 {
+    font-size: $font-h1;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: $font-h2;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: $font-h3;
+}
+
+h4 {
+    font-size: $font-h4;
 }

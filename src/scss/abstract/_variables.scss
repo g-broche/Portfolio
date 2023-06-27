@@ -1,17 +1,21 @@
-$color-black: black;
+$background-dark: black;
+$background-light: #A7D2EB;
 
 $color-dark-font: black;
 $color-light-font: white;
 
 $color-picture-border: brown;
-$hyperlink-button-background: blue;
+$hyperlink-inner-button-background: #60AB73;
+$hyperlink-outer-button-background : #60AB73;
 
 $color-slider-nav: white;
 
 $color-bg-slider-close: white;
 $color-slider-close: black;
 
-
+$color-alternate-background-primary: burlywood;
+$color-alternate-background-secondary: #3C7391;
+$color-article-background : #A7D2EB;
 $padding-main-vertical: 50px;
 $padding-main-horizontal: 15%;
 
@@ -21,17 +25,14 @@ $gap-in-subsection : 15px;
 
 $paddingX-in-section: 150px;
 $paddingY-in-section: 100px;
-$padding-in-section: 150px 100px 50px 100px;
+$padding-in-section: 75px 100px 50px 100px;
 
-$padding-article: 50px 50px;
+$padding-article: 20px 20px;
 
 $margin-section-footer: 50px;
 
 $border-radius-small: 5px;
 $border-radius-big: 15px;
-
-$hyperlink-button-height: 60px;
-$hyperlink-button-width: 300px;
 
 $slider-navigation-size: 100px;
 $slider-close-size: 40px;

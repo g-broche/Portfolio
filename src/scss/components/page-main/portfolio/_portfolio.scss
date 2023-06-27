@@ -45,10 +45,6 @@
         gap: 15px;
 
         a {
-            height: $hyperlink-button-height;
-            width: $hyperlink-button-width;
-            border-radius: calc($hyperlink-button-height / 2);
-            background-color: $hyperlink-button-background;
             display: flex;
             justify-content: center;
             align-items: center;

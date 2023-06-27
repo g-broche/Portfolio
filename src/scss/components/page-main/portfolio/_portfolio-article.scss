@@ -3,13 +3,22 @@
 .portfolio-article {
     width: 30%;
     padding: $padding-article;
-    background-color: white;
+    background-color: $color-article-background;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: $gap-in-subsection ;
 
-    &__header {}
+    &__header {
+        picture {
+            height: 100px;
+
+            img {
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+    }
 
     &__main {
         display: flex;
@@ -18,6 +27,11 @@
 
         h4 {
             text-align: center;
+        }
+
+        a {
+            width: fit-content;
+            align-self: center;
         }
     }
 }

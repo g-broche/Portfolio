@@ -1,0 +1,48 @@
+@use '../../abstract' as *;
+
+$hyperlink-inner-button-height: 60px;
+$hyperlink-inner-button-width: 300px;
+
+button {
+    font-size: $font-size-common;
+}
+
+button.inner-link {
+    background-color: $hyperlink-inner-button-background ;
+    color: $color-light-font;
+    height: $hyperlink-inner-button-height;
+    width: $hyperlink-inner-button-width;
+    border-radius: calc($hyperlink-inner-button-height / 2);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+button.outer-link {
+    padding: 5px 20px;
+    background-color: $hyperlink-outer-button-background ;
+    color: $color-light-font;
+    border-radius: $border-radius-big;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+button.upward::after {
+    content: "☝";
+    font-size: calc($font-size-common * 2.5);
+}
+
+button.downward::after {
+    content: "☟";
+    font-size: calc($font-size-common * 2.5);
+}
+
+
+button.outer-link::after {
+    content: "➜";
+    font-size: calc($font-size-common * 1.1);
+}

@@ -4,6 +4,10 @@
 @use '../page-main/about/about' as *;
 @use '../page-main/activities/' as *;
 
+html {
+    scroll-behavior: smooth;
+}
+
 .page-main {
     width: 100%;
     display: flex;
@@ -11,11 +15,11 @@
 }
 
 .page-main>*:nth-child(odd) {
-    background-color: burlywood;
+    background-color: $color-alternate-background-primary;
 }
 
 .page-main>*:nth-child(even) {
-    background-color: coral;
+    background-color: $color-alternate-background-secondary;
 }
 
 #modal-overlay {

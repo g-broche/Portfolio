@@ -136,6 +136,24 @@ h4 {
   font-family: "Tenor Sans";
 }
 
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 35px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
 .hidden {
   display: none;
 }
@@ -155,46 +173,48 @@ h4 {
 .header-nav ul {
   display: flex;
   justify-content: center;
-  gap: 50px;
 }
 .header-nav ul li {
   list-style: none;
+  padding: 10px 25px;
   font-size: 25px;
   color: white;
+  background-color: black;
+  transition: background-color 0.6s ease;
+}
+.header-nav ul li:hover {
+  background-color: #A7D2EB;
 }
 
 .introduction {
   width: 100%;
-  padding: 100px 150px;
+  padding: 75px 100px 50px 100px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 30px;
 }
 .introduction picture {
   width: 25%;
 }
 .introduction__main {
-  width: 70%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 15px;
 }
-.introduction__main h1 {
-  font-size: 40px;
+.introduction__text {
+  width: 70%;
 }
-.introduction__main__link {
-  height: 60px;
-  width: 300px;
-  border-radius: 30px;
-  background-color: blue;
+.introduction__link {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
 }
 
 .portfolio {
   width: 100%;
-  padding: 150px 100px 50px 100px;
+  padding: 75px 100px 50px 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -230,10 +250,6 @@ h4 {
   gap: 15px;
 }
 .portfolio__footer a {
-  height: 60px;
-  width: 300px;
-  border-radius: 30px;
-  background-color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -242,12 +258,20 @@ h4 {
 
 .portfolio-article {
   width: 30%;
-  padding: 50px 50px;
-  background-color: white;
+  padding: 20px 20px;
+  background-color: #A7D2EB;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+}
+.portfolio-article__header picture {
+  height: 100px;
+}
+.portfolio-article__header picture img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
 }
 .portfolio-article__main {
   display: flex;
@@ -257,10 +281,15 @@ h4 {
 .portfolio-article__main h4 {
   text-align: center;
 }
+.portfolio-article__main a {
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: center;
+}
 
 .about {
   width: 100%;
-  padding: 150px 100px 50px 100px;
+  padding: 75px 100px 50px 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -274,19 +303,14 @@ h4 {
   gap: 15px;
 }
 .about__footer a {
-  height: 60px;
-  width: 300px;
-  border-radius: 30px;
-  background-color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
 }
 
 .activities {
   width: 100%;
-  padding: 150px 100px 50px 100px;
+  padding: 75px 100px 50px 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -297,6 +321,11 @@ h4 {
   position: relative;
   display: flex;
   justify-content: center;
+}
+.activities a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #picture-grid {
@@ -361,6 +390,10 @@ h4 {
   transform: translate(100%, -100%);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .page-main {
   width: 100%;
   display: flex;
@@ -372,7 +405,7 @@ h4 {
 }
 
 .page-main > *:nth-child(even) {
-  background-color: coral;
+  background-color: #3C7391;
 }
 
 #modal-overlay {
@@ -397,9 +430,170 @@ h4 {
   display: block;
 }
 
+button {
+  font-size: 20px;
+}
+
+button.inner-link {
+  background-color: #60AB73;
+  color: white;
+  height: 60px;
+  width: 300px;
+  border-radius: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+button.outer-link {
+  padding: 5px 20px;
+  background-color: #60AB73;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+button.upward::after {
+  content: "☝";
+  font-size: 50px;
+}
+
+button.downward::after {
+  content: "☟";
+  font-size: 50px;
+}
+
+button.outer-link::after {
+  content: "➜";
+  font-size: 22px;
+}
+
 body {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.minigames {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: burlywood;
+}
+.minigames header {
+  padding: 75px 100px 50px 100px;
+}
+.minigames header h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.minigames__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.minigames__home {
+  width: 100%;
+  padding: 75px 100px 50px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.minigames__home .screenshots {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.minigames__home .screenshots picture {
+  height: 40%;
+  width: 40%;
+}
+.minigames__home .screenshots picture img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+.minigames__pong {
+  width: 100%;
+  padding: 75px 100px 50px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.minigames__pong li {
+  list-style: upper-roman;
+}
+.minigames article {
+  margin-top: 30px;
+}
+.minigames .objects {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.minigames .objects__screenshots {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.minigames .objects__screenshots picture {
+  height: 40%;
+  width: 40%;
+}
+.minigames .objects__screenshots picture img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+.minigames .interactions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.minigames .interactions__screenshots {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.minigames .interactions__screenshots picture {
+  height: 60%;
+}
+.minigames .interactions__screenshots picture img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+.minigames .mouse-movement {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.minigames .mouse-movement__screenshots {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.minigames .mouse-movement__screenshots picture {
+  width: 60%;
+}
+.minigames .mouse-movement__screenshots picture img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+.minigames .gallery-screenshots {
+  background-color: #3C7391;
+  padding: 20px 20px;
 }/*# sourceMappingURL=styles.css.map */
