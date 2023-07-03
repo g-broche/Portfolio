@@ -130,11 +130,14 @@ btnContact.addEventListener("click", openContactModal)
 contactForm.addEventListener("submit", (event) => { handleSubmit(event) });
 
 contactMessage.addEventListener("input", displayCurrentLength);
-contactCancel.addEventListener("click", closeContactModal);
+contactCancel.addEventListener("click", (event) => {
+    event.preventDefault
+    closeContactModal;
+});
 
 // contactSubmit.addEventListener("click", (event) => {
 //     event.preventDefault;
-//     submitForm(event);
+//     handleSubmit(event);
 // });
 
 
