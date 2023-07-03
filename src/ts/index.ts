@@ -127,18 +127,12 @@ modalPreviousButton?.addEventListener("click", toPreviousPhoto);
 
 btnContact.addEventListener("click", openContactModal)
 
-contactForm.addEventListener("submit", (event) => { handleSubmit(event) });
+// contactForm.addEventListener("submit", (event) => { handleSubmit(event) });
 
 contactMessage.addEventListener("input", displayCurrentLength);
-contactCancel.addEventListener("click", (event) => {
-    event.preventDefault
-    closeContactModal;
-});
+contactCancel.addEventListener("click", closeContactModal)
 
-// contactSubmit.addEventListener("click", (event) => {
-//     event.preventDefault;
-//     handleSubmit(event);
-// });
+contactSubmit.addEventListener("click", handleSubmit)
 
 
 
@@ -299,6 +293,13 @@ function closeContactModal() {
     isMessageValid = false;
 }
 
+function getRequestBody() {
+    return {
+        email: contactEmail.value,
+        message: contactMessage.value
+    }
+}
+
 // async function submitForm(event) {
 //     verifyEmail();
 //     verifyMessage();
@@ -327,16 +328,14 @@ function closeContactModal() {
 //     }
 // }
 
-async function handleSubmit(event: SubmitEvent) {
-    event.preventDefault();
+async function handleSubmit() {
     verifyEmail();
     verifyMessage();
 
     if (isEmailValid && isMessageValid) {
-        let data = new FormData(event.target as HTMLFormElement);
         fetch(formAction, {
             method: "POST",
-            body: data,
+            body: JSON.stringify(getRequestBody()),
             headers: {
                 'Accept': 'application/json'
             }
