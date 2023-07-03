@@ -115,6 +115,8 @@ const regPattern = {
     email: /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 }
 
+const formAction = "https://formspree.io/f/mrgwzovb";
+
 /* ********** EVENT LISTENERS ********** */
 
 modalCloseButton?.addEventListener("click", hideModalPictureContainer);
@@ -124,14 +126,19 @@ modalNextButton?.addEventListener("click", toNextPhoto);
 modalPreviousButton?.addEventListener("click", toPreviousPhoto);
 
 btnContact.addEventListener("click", openContactModal)
-contactForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-});
+
+contactForm.addEventListener("submit", (event) => { handleSubmit(event) });
 
 contactMessage.addEventListener("input", displayCurrentLength);
 contactCancel.addEventListener("click", closeContactModal);
 
-contactSubmit.addEventListener("click", submitForm);
+// contactSubmit.addEventListener("click", (event) => {
+//     event.preventDefault;
+//     submitForm(event);
+// });
+
+
+
 
 /* ********** FUNCTIONS ********** */
 
@@ -289,13 +296,57 @@ function closeContactModal() {
     isMessageValid = false;
 }
 
-function submitForm() {
+// async function submitForm(event) {
+//     verifyEmail();
+//     verifyMessage();
+//     if (isEmailValid && isMessageValid) {
+//         contactForm.submit;
+//         alert("le message a bien été envoyé");
+//         closeContactModal();
+//     } else {
+//         if (!isEmailValid && !isMessageValid) {
+//             submitErrorMsg.textContent = "Le format de l'email est incorrect et le message ne satisfait pas la longueur attendue";
+//         }
+//         else if (!isEmailValid) {
+//             submitErrorMsg.textContent = "Le format de l'email est incorrect";
+//         }
+//         else {
+//             if (contactMessage.value.length < messageLengthRange.min) {
+//                 submitErrorMsg.textContent = "Le message est trop court";
+//             } else if (contactMessage.value.length > messageLengthRange.max) {
+//                 submitErrorMsg.textContent = "Le message est trop long";
+//             }
+//         }
+//         submitErrorMsg.classList.remove("transparent");
+//         setTimeout(() => {
+//             submitErrorMsg.classList.add("transparent")
+//         }, 5000);
+//     }
+// }
+
+async function handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
     verifyEmail();
     verifyMessage();
+
     if (isEmailValid && isMessageValid) {
-        contactForm.submit;
-        alert("le message a bien été envoyé");
-        closeContactModal();
+        let data = new FormData(event.target as HTMLFormElement);
+        fetch(formAction, {
+            method: "POST",
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert("le message a bien été envoyé");
+                closeContactModal();
+            } else {
+                alert("une erreur a eu lieu durant la transmission de l'email via formspree")
+            }
+        }).catch(error => {
+            alert("une erreur a eu lieu durant la transmission de l'email via formspree")
+        });
     } else {
         if (!isEmailValid && !isMessageValid) {
             submitErrorMsg.textContent = "Le format de l'email est incorrect et le message ne satisfait pas la longueur attendue";
@@ -316,6 +367,7 @@ function submitForm() {
         }, 5000);
     }
 }
+// form.addEventListener("submit", handleSubmit)
 
 /* ********** Initialization ********** */
 displayPictures();
