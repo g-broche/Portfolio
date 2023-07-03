@@ -154,6 +154,10 @@ h4 {
   font-size: 25px;
 }
 
+.error {
+  color: red;
+}
+
 .hidden {
   display: none;
 }
@@ -205,8 +209,18 @@ h4 {
 }
 .introduction__text {
   width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
-.introduction__link {
+.introduction footer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.introduction footer__link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,10 +248,20 @@ h4 {
 }
 .portfolio .learning-projects__title {
   text-align: center;
+  margin-bottom: 30px;
 }
 .portfolio .learning-projects__container {
   display: flex;
   justify-content: space-between;
+}
+.portfolio .learning-projects__summary {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.portfolio .learning-projects__summary li {
+  margin-left: 15px;
 }
 .portfolio__main {
   width: 100%;
@@ -295,6 +319,11 @@ h4 {
   align-items: center;
   gap: 30px;
 }
+.about__main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 .about__footer {
   margin-top: 50px;
   display: flex;
@@ -322,7 +351,10 @@ h4 {
   display: flex;
   justify-content: center;
 }
-.activities a {
+.activities__footer {
+  margin-top: 50px;
+}
+.activities__footer a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -676,6 +708,78 @@ body {
   margin-left: 15px;
 }
 
+.modal-form-wrapper {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: -moz-fit-content;
+  height: fit-content;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.modal-form-wrapper header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal-form-wrapper header #submit-error {
+  height: 2em;
+}
+.modal-form-wrapper .contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal-form-wrapper .contact-form .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.modal-form-wrapper .contact-form__email {
+  width: 15em;
+  border: 4px lightgray ridge;
+  padding: 3px 2px 3px 10px;
+}
+.modal-form-wrapper .contact-form__message {
+  width: 100%;
+  height: 10em;
+  border: 4px lightgray ridge;
+  resize: none;
+  padding: 3px 2px 3px 10px;
+}
+.modal-form-wrapper .contact-form footer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+.modal-form-wrapper .contact-form__buttons {
+  align-self: flex-end;
+  display: flex;
+  gap: 50px;
+}
+.modal-form-wrapper .contact-form__cancel {
+  padding: 5px 20px;
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+}
+.modal-form-wrapper .contact-form__submit {
+  padding: 5px 20px;
+  background-color: #60AB73;
+  color: white;
+  border-radius: 5px;
+}
+
 .modal-picture {
   position: fixed;
   z-index: 2;
@@ -758,7 +862,7 @@ body {
   width: auto;
 }
 
-#modal-overlay {
+#modal-photo-overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -772,10 +876,27 @@ body {
   z-index: 1;
 }
 
+#modal-contact-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
 .hidden {
   display: none;
 }
 
 .visible {
   display: flex;
+}
+
+.transparent {
+  opacity: 0;
 }/*# sourceMappingURL=styles.css.map */

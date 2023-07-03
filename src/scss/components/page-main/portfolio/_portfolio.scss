@@ -24,11 +24,23 @@
 
         &__title {
             text-align: center;
+            margin-bottom: $gap-in-section;
         }
 
         &__container {
             display: flex;
             justify-content: space-between;
+        }
+
+        &__summary {
+            margin-top: $gap-in-section;
+            display: flex;
+            flex-direction: column;
+            gap: $gap-in-subsection;
+
+            li {
+                margin-left: $gap-in-subsection;
+            }
         }
 
     }

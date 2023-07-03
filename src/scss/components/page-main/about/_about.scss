@@ -8,6 +8,12 @@
     align-items: center;
     gap: $gap-in-section;
 
+    &__main {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-in-section;
+    }
+
     &__footer {
         margin-top: $margin-section-footer;
         display: flex;

@@ -1,5 +1,88 @@
 @use '../abstract/' as *;
 
+.modal-form-wrapper {
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: fit-content;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-in-section;
+
+    header {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        #submit-error {
+            height: 2em;
+        }
+    }
+
+
+    .contact-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        gap: $gap-in-subsection;
+
+        .form-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__email {
+            width: 15em;
+            border: 4px lightgray ridge;
+            padding: 3px 2px 3px 10px;
+        }
+
+        &__message {
+            width: 100%;
+            height: 10em;
+            border: 4px lightgray ridge;
+            resize: none;
+            padding: 3px 2px 3px 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 20px;
+        }
+
+        &__buttons {
+            align-self: flex-end;
+            display: flex;
+            gap: 50px;
+        }
+
+        &__cancel {
+            padding: 5px 20px;
+            background-color: gray;
+            color: $color-light-font;
+            border-radius: $border-radius-small;
+        }
+
+        &__submit {
+            padding: 5px 20px;
+            background-color: $hyperlink-outer-button-background ;
+            color: $color-light-font;
+            border-radius: $border-radius-small;
+        }
+    }
+}
+
 .modal-picture {
     position: fixed;
     z-index: 2;
@@ -86,7 +169,7 @@
     }
 }
 
-#modal-overlay {
+#modal-photo-overlay {
     position: fixed;
     top: 0;
     right: 0;
@@ -99,10 +182,26 @@
     z-index: 1;
 }
 
+#modal-contact-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(1px);
+    z-index: 1;
+}
+
 .hidden {
     display: none;
 }
 
 .visible {
     display: flex;
+}
+
+.transparent {
+    opacity: 0;
 }

@@ -81,24 +81,57 @@ const PhotoCollection: Photo[] = [
 /* ********** PAGE ELEMENTS ********** */
 
 const pictureGrid = document.getElementById("picture-grid");
+const btnContact = document.getElementById("btn-contact")! as HTMLButtonElement;
+
 const modalPictureContainer = document.getElementById("modal-picture-container");
 const modalPreviousButton = document.getElementById("modal-picture-previous");
 const modalNextButton = document.getElementById("modal-picture-next");
 const modalCloseButton = document.getElementById("modal-picture-close");
 const modalPicture = document.getElementById("modal-picture-img");
 
-const modalOverlay = document.getElementById("modal-overlay");
+const modalFormContainer = document.getElementById("modal-form-wrapper");
+
+const submitErrorMsg = document.getElementById("submit-error") as HTMLSpanElement;
+const contactForm = document.getElementById("contact-form") as HTMLFormElement;
+const contactEmail = document.getElementById("email-field") as HTMLInputElement;
+const contactMessage = document.getElementById("message-field") as HTMLTextAreaElement;
+const contactLengthFeedback = document.getElementById("message-length") as HTMLSpanElement;
+const contactCancel = document.getElementById("form-cancel") as HTMLButtonElement;
+const contactSubmit = document.getElementById("form-submit") as HTMLButtonElement;
+
+const modalPhotoOverlay = document.getElementById("modal-photo-overlay");
+const modalContactOverlay = document.getElementById("modal-contact-overlay");
 
 /* ********** LOGIC CONST AND VARIABLES ********** */
 
+let isEmailValid = false;
+let isMessageValid = false;
+const messageLengthRange = {
+    min: 10,
+    max: 1000
+}
+
+const regPattern = {
+    email: /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+}
 
 /* ********** EVENT LISTENERS ********** */
 
 modalCloseButton?.addEventListener("click", hideModalPictureContainer);
-modalOverlay?.addEventListener("click", hideModalPictureContainer);
+modalPhotoOverlay?.addEventListener("click", hideModalPictureContainer);
 
 modalNextButton?.addEventListener("click", toNextPhoto);
 modalPreviousButton?.addEventListener("click", toPreviousPhoto);
+
+btnContact.addEventListener("click", openContactModal)
+contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+});
+
+contactMessage.addEventListener("input", displayCurrentLength);
+contactCancel.addEventListener("click", closeContactModal);
+
+contactSubmit.addEventListener("click", submitForm);
 
 /* ********** FUNCTIONS ********** */
 
@@ -132,11 +165,6 @@ function displayPictures() {
         pictureGrid?.appendChild(createOneThumbnail(photo));
     });
 }
-
-// imageToLoad.onload = async () => {
-//     showModalPictureContainer();
-//     imageToLoad.onload = null;
-// }
 
 async function displayModalPicture(event: MouseEvent) {
     let sourceImage = getSourceImage(event)
@@ -178,31 +206,30 @@ function findImageFromId(id: number | null): Photo | null {
 
 function hideModalPictureContainer() {
     modalPictureContainer?.classList.remove("visible");
-    modalOverlay?.classList.remove("visible");
+    modalPhotoOverlay?.classList.remove("visible");
     modalPictureContainer?.classList.add("hidden");
-    modalOverlay?.classList.add("hidden");
-    console.log(modalOverlay)
+    modalPhotoOverlay?.classList.add("hidden");
 }
 
 function showModalPictureContainer() {
     modalPictureContainer?.classList.remove("hidden");
-    modalOverlay?.classList.remove("hidden");
+    modalPhotoOverlay?.classList.remove("hidden");
     modalPictureContainer?.classList.add("visible");
-    modalOverlay?.classList.add("visible");
+    modalPhotoOverlay?.classList.add("visible");
 }
 
 function toNextPhoto() {
-    let imageId = getIdFromModalPicture()
+    let imageId = getIdFromModalPicture();
     if (imageId) {
-        let nextPhoto = getNextPhotoFromCurrent(parseInt(imageId))
-        if (nextPhoto) { setModalPictureContent(nextPhoto) }
+        let nextPhoto = getNextPhotoFromCurrent(parseInt(imageId));
+        if (nextPhoto) { setModalPictureContent(nextPhoto); }
     }
 }
 function toPreviousPhoto() {
-    let imageId = getIdFromModalPicture()
+    let imageId = getIdFromModalPicture();
     if (imageId) {
-        let previousPhoto = getPreviousPhotoFromCurrent(parseInt(imageId))
-        if (previousPhoto) { setModalPictureContent(previousPhoto) }
+        let previousPhoto = getPreviousPhotoFromCurrent(parseInt(imageId));
+        if (previousPhoto) { setModalPictureContent(previousPhoto); }
     }
 }
 
@@ -219,6 +246,75 @@ function getPreviousPhotoFromCurrent(currentId: number): Photo | null {
     let currentIndex = PhotoCollection.findIndex((photo) => photo.id === currentId);
     let previousIndex = (currentIndex > 0 ? (currentIndex - 1) : (PhotoCollection.length - 1));
     return PhotoCollection[previousIndex];
+}
+
+function verifyEmail() {
+    isEmailValid = regPattern.email.test(contactEmail.value);
+}
+
+function verifyMessage() {
+    isMessageValid = (contactMessage.value.length >= messageLengthRange.min && contactMessage.value.length <= messageLengthRange.max);
+}
+
+function displayCurrentLength() {
+    let currentlength = contactMessage.value.length;
+    let message = "";
+
+    if (currentlength < messageLengthRange.min) {
+        message = "veuillez écrire au moins 10 caractères."
+        contactLengthFeedback.classList.add("error");
+    } else if (currentlength >= messageLengthRange.min && currentlength <= messageLengthRange.max) {
+        message = currentlength + "/" + messageLengthRange.max
+        if (contactLengthFeedback.classList.contains("error")) { contactLengthFeedback.classList.remove("error") }
+    } else {
+        message = currentlength + "/" + messageLengthRange.max
+        contactLengthFeedback.classList.add("error");
+    }
+    contactLengthFeedback.textContent = message;
+}
+
+function openContactModal() {
+    displayCurrentLength();
+    modalFormContainer?.classList.remove("hidden");
+    modalContactOverlay?.classList.remove("hidden");
+}
+
+function closeContactModal() {
+    modalFormContainer?.classList.add("hidden");
+    modalContactOverlay?.classList.add("hidden");
+    contactMessage.value = ""
+    contactEmail.value = "";
+    contactMessage.value = "";
+    isEmailValid = false;
+    isMessageValid = false;
+}
+
+function submitForm() {
+    verifyEmail();
+    verifyMessage();
+    if (isEmailValid && isMessageValid) {
+        contactForm.submit;
+        alert("le message a bien été envoyé");
+        closeContactModal();
+    } else {
+        if (!isEmailValid && !isMessageValid) {
+            submitErrorMsg.textContent = "Le format de l'email est incorrect et le message ne satisfait pas la longueur attendue";
+        }
+        else if (!isEmailValid) {
+            submitErrorMsg.textContent = "Le format de l'email est incorrect";
+        }
+        else {
+            if (contactMessage.value.length < messageLengthRange.min) {
+                submitErrorMsg.textContent = "Le message est trop court";
+            } else if (contactMessage.value.length > messageLengthRange.max) {
+                submitErrorMsg.textContent = "Le message est trop long";
+            }
+        }
+        submitErrorMsg.classList.remove("transparent");
+        setTimeout(() => {
+            submitErrorMsg.classList.add("transparent")
+        }, 5000);
+    }
 }
 
 /* ********** Initialization ********** */
