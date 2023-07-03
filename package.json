@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cpy \"src/assets/pictures/**/*\" \"dist/src/assets/pictures\" && parcel index.html",
     "start-multiple-entries": "parcel index.html centered.html what.html ",
-    "build": "cpy \"src/assets/pictures/**/*\" \"dist/src/assets/pictures\" && parcel build index.html"
+    "build": "cpy \"src/assets/pictures/**/*\" \"dist/src/assets/pictures\" && parcel build index.html",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "assets": "^3.0.1",
