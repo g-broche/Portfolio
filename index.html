@@ -1,1 +1,182 @@
-<html><head><meta charset="UTF-8"><link rel="stylesheet" type="text/css" href="/styles.5c1ee029.css"><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5"><title>self introduction</title><meta name="description" content="self introduction"><meta name="theme-color" content="#fff"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&family=Tenor+Sans&display=swap" rel="stylesheet"></head><body> <header id="page-header" class="page-header"> <nav class="header-nav"> <ul> <a href="#introduction"> <li>Introduction</li> </a> <a href="#portfolio"> <li>Portfolio</li> </a> <a href="#about"> <li>A propos</li> </a> <a href="#activities"> <li>Photos</li> </a> </ul> </nav> </header> <main id="page-main" class="page-main"> <section id="introduction" class="introduction"> <main class="introduction__main"> <picture> <img src="" alt="photo"> </picture> <div class="introduction__text"> <h1>Salutation!</h1> <p>Je suis Gregory Broche, aspirant développeur web et amateur de photographie nature!</p> </div> </main> <footer> <p>Informations sur certains de mes projets!</p> <a class="introduction__link" href="#portfolio"><button class="downward inner-link">voir mon portfolio</button></a> </footer> </section> <section id="portfolio" class="portfolio"> <header class="portfolio__header"> <h2>Mon actualité</h2> <p>Actuellement en formation développement web et web mobile sur Moirans (38 - Isère)</p> </header> <main class="portfolio__main"> <section class="learning-projects"> <h3 class="learning-projects__title">Exemples de projets réalisés en cours de formation</h3> <div class="learning-projects__container"> <article class="portfolio-article"> <header class="portfolio-article__header"> <picture> <img src="/MainPageUI.9ad0a843.webp" alt="project-minigames"> </picture> </header> <main class="portfolio-article__main"> <h4>Site de jeux</h4> <p>Premier projet assez conséquent durant la formation visant découvrir les animations en CSS et a développer un mini jeu en JS. </p> <a href="/minigames.html"><button class="outer-link">En savoir plus</button></a> </main> </article> <article class="portfolio-article"> <header class="portfolio-article__header"> <picture> <img src="/userInterfaceDesktop.0a1e18ba.webp" alt="project-news"> </picture> </header> <main class="portfolio-article__main"> <h4>Site d'aggrégation d'informations</h4> <p>Premier project de formation utilisant une source de données extérieure via NewsAPI afin d'afficher dynamiquement des informations. </p> <a href="/newsproject.html"><button class="outer-link">En savoir plus</button></a> </main> </article> <article class="portfolio-article"> <header class="portfolio-article__header"> <picture> <img src="/warning-zone.ca80dfdc.webp" alt="project-image"> </picture> </header> <main class="portfolio-article__main"> <h4>projet 3</h4> <p>EN CONSTRUCTION</p> </main> </article> </div> <section class="learning-projects__summary"> <p>Technologies et connaissances vues et expérimenté à ce jour durant la formation :</p> <ul> <li>Front-end : HTML, SCSS, Javascript, Typescript, Twig, Vue et React</li> <li>Back-end : PHP, Express, MySQL, MongoDB</li> <li>Outils : Figma, VS code, Composer, npm, Git</li> </ul> </section> </section> </main> <footer class="portfolio__footer"> <p>En savoir plus sur mon parcours et ma personalité!</p> <a href="#about"><button class="downward inner-link">A propos de moi</button></a> </footer> </section> <section id="about" class="about"> <header class="about__header"> <h2>A propos de moi</h2> </header> <main class="about__main"> <div> <p>Passionné de tout ce qui peut s'apparenter à de la logique, j'ai depuis mon enfance eu un attrait pour les sciences et par la suite pour l'informatique.</p> <p>De ce fait, ce qui m'attire le plus dans le developpement est le fait de concevoir des solutions répondant à des problématiques données. J'apprécie également de pouvoir apprendre de nouvelles connaissances et de voir comment différents éléments s'imbriquent les uns avec les autres pour parvenir à un résultat voulu. </p> </div> <p>j'ai également une affinité avec ce qui est lié à la nature et il m'arrive de faire des randonnées avec mon appareil photo pour observer tant la faune que la flore environnante. J'ai par le passé pu m'adonner au jardinage et également fait du bénévolat plusieurs année pour une activité pédagogique sur la thématique de la permaculture au sein d'une structure où j'avais travaillé antérieurement. </p> <p>Un autre de mes loisirs, si l'on peut appeler ça ainsi, est de m'obstiner à tenter de dessiner des fanarts, et ce en dépit de mon manque d'aptitudes en la matière! </p> </main> <footer class="about__footer"> <p>Découvrir mes photos!</p> <a href="#activities"><button class="downward inner-link">Mes photos</button></a> </footer> </section> <section id="activities" class="activities"> <header class="activities__header"> <h2>mes photos</h2> </header> <main class="activities__main"> <div id="picture-grid"> </div> <section id="modal-picture-container" class="hidden modal-picture"> <picture id="modal-picture-img" class="modal-picture__img"> <source class="modal source-small" srcset="" media="(max-width: 720px)"> <source class="source-medium" srcset="" media="(max-width: 1080px)"> <img class="source-main" src="" alt=""> </picture> <button id="modal-picture-previous" class="arrow modal-picture__arrow-left">&#10094;</button> <button id="modal-picture-next" class="arrow modal-picture__arrow-right">&#10094;</button> <button id="modal-picture-close" class="modal-close modal-picture__close">&#10006;</button> </section> </main> <footer class="activities__footer"> <a href="#page-header"><button class="inner-link upward">Retour au début</button></a> </footer> </section> </main> <footer id="page-footer" class="page-footer"> <header> </header> <main> <form class="contact-form"> </form> </main> <footer> <ul class="social-link"> <li><button id="btn-contact">Contact</button></li> <li><button id="btn-git">Mon github</button></li> </ul> <section id="modal-form-wrapper" class="modal-form-wrapper"> <header> <h4>Envoyer un message</h4> <span id="submit-error" class="error transparent"></span> </header> <section id="contact-form" class="contact-form"> <div class="form-group"> <label for="email-field">Addresse email:</label> <input id="email-field" class="contact-form__email" type="email" name="email" placeholder="Saisissez votre adresse email ici" required> </div> <div class="form-group"> <label for="message-field">Votre message:</label> <textarea id="message-field" class="contact-form__message" name="message" placeholder="Ecrivez votre message ici" required></textarea> </div> <footer> <span id="message-length"></span> <div class="contact-form__buttons"> <button id="form-cancel" class="contact-form__cancel">Annuler</button> <button id="form-submit" class="contact-form__submit">Envoyer</button> </div> </footer> </section> </section> </footer> </footer> <div id="modal-photo-overlay" class="hidden"></div> <div id="modal-contact-overlay"></div> </body></html><script type="module" src="/ts.ab4ea1df.js"></script>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/styles.5c1ee029.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+    <title>self introduction</title>
+    <meta name="description" content="self introduction">
+    <meta name="theme-color" content="#fff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&family=Tenor+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header id="page-header" class="page-header">
+        <nav class="header-nav">
+            <ul> <a href="#introduction">
+                    <li>Introduction</li>
+                </a> <a href="#portfolio">
+                    <li>Portfolio</li>
+                </a> <a href="#about">
+                    <li>A propos</li>
+                </a> <a href="#activities">
+                    <li>Photos</li>
+                </a> </ul>
+        </nav>
+    </header>
+    <main id="page-main" class="page-main">
+        <section id="introduction" class="introduction">
+            <main class="introduction__main">
+                <picture> <img src="" alt="photo"> </picture>
+                <div class="introduction__text">
+                    <h1>Salutation!</h1>
+                    <p>Je suis Gregory Broche, aspirant développeur web et amateur de photographie nature!</p>
+                </div>
+            </main>
+            <footer>
+                <p>Informations sur certains de mes projets!</p> <a class="introduction__link" href="#portfolio"><button
+                        class="downward inner-link">voir mon portfolio</button></a>
+            </footer>
+        </section>
+        <section id="portfolio" class="portfolio">
+            <header class="portfolio__header">
+                <h2>Mon actualité</h2>
+                <p>Actuellement en formation développement web et web mobile sur Moirans (38 - Isère)</p>
+            </header>
+            <main class="portfolio__main">
+                <section class="learning-projects">
+                    <h3 class="learning-projects__title">Exemples de projets réalisés en cours de formation</h3>
+                    <div class="learning-projects__container">
+                        <article class="portfolio-article">
+                            <header class="portfolio-article__header">
+                                <picture> <img src="/MainPageUI.9ad0a843.webp" alt="project-minigames"> </picture>
+                            </header>
+                            <main class="portfolio-article__main">
+                                <h4>Site de jeux</h4>
+                                <p>Premier projet assez conséquent durant la formation visant découvrir les animations
+                                    en CSS et a développer un mini jeu en JS. </p> <a href="/minigames.html"><button
+                                        class="outer-link">En savoir plus</button></a>
+                            </main>
+                        </article>
+                        <article class="portfolio-article">
+                            <header class="portfolio-article__header">
+                                <picture> <img src="/userInterfaceDesktop.0a1e18ba.webp" alt="project-news"> </picture>
+                            </header>
+                            <main class="portfolio-article__main">
+                                <h4>Site d'aggrégation d'informations</h4>
+                                <p>Premier project de formation utilisant une source de données extérieure via NewsAPI
+                                    afin d'afficher dynamiquement des informations. </p> <a
+                                    href="/newsproject.html"><button class="outer-link">En savoir plus</button></a>
+                            </main>
+                        </article>
+                        <article class="portfolio-article">
+                            <header class="portfolio-article__header">
+                                <picture> <img src="/warning-zone.ca80dfdc.webp" alt="project-image"> </picture>
+                            </header>
+                            <main class="portfolio-article__main">
+                                <h4>projet 3</h4>
+                                <p>EN CONSTRUCTION</p>
+                            </main>
+                        </article>
+                    </div>
+                    <section class="learning-projects__summary">
+                        <p>Technologies et connaissances vues et expérimenté à ce jour durant la formation :</p>
+                        <ul>
+                            <li>Front-end : HTML, SCSS, Javascript, Typescript, Twig, Vue et React</li>
+                            <li>Back-end : PHP, Express, MySQL, MongoDB</li>
+                            <li>Outils : Figma, VS code, Composer, npm, Git</li>
+                        </ul>
+                    </section>
+                </section>
+            </main>
+            <footer class="portfolio__footer">
+                <p>En savoir plus sur mon parcours et ma personalité!</p> <a href="#about"><button
+                        class="downward inner-link">A propos de moi</button></a>
+            </footer>
+        </section>
+        <section id="about" class="about">
+            <header class="about__header">
+                <h2>A propos de moi</h2>
+            </header>
+            <main class="about__main">
+                <div>
+                    <p>Passionné de tout ce qui peut s'apparenter à de la logique, j'ai depuis mon enfance eu un attrait
+                        pour les sciences et par la suite pour l'informatique.</p>
+                    <p>De ce fait, ce qui m'attire le plus dans le developpement est le fait de concevoir des solutions
+                        répondant à des problématiques données. J'apprécie également de pouvoir apprendre de nouvelles
+                        connaissances et de voir comment différents éléments s'imbriquent les uns avec les autres pour
+                        parvenir à un résultat voulu. </p>
+                </div>
+                <p>j'ai également une affinité avec ce qui est lié à la nature et il m'arrive de faire des randonnées
+                    avec mon appareil photo pour observer tant la faune que la flore environnante. J'ai par le passé pu
+                    m'adonner au jardinage et également fait du bénévolat plusieurs année pour une activité pédagogique
+                    sur la thématique de la permaculture au sein d'une structure où j'avais travaillé antérieurement.
+                </p>
+                <p>Un autre de mes loisirs, si l'on peut appeler ça ainsi, est de m'obstiner à tenter de dessiner des
+                    fanarts, et ce en dépit de mon manque d'aptitudes en la matière! </p>
+            </main>
+            <footer class="about__footer">
+                <p>Découvrir mes photos!</p> <a href="#activities"><button class="downward inner-link">Mes
+                        photos</button></a>
+            </footer>
+        </section>
+        <section id="activities" class="activities">
+            <header class="activities__header">
+                <h2>mes photos</h2>
+            </header>
+            <main class="activities__main">
+                <div id="picture-grid"> </div>
+                <section id="modal-picture-container" class="hidden modal-picture">
+                    <picture id="modal-picture-img" class="modal-picture__img">
+                        <source class="modal source-small" srcset="" media="(max-width: 720px)">
+                        <source class="source-medium" srcset="" media="(max-width: 1080px)"> <img class="source-main"
+                            src="" alt="">
+                    </picture> <button id="modal-picture-previous"
+                        class="arrow modal-picture__arrow-left">&#10094;</button> <button id="modal-picture-next"
+                        class="arrow modal-picture__arrow-right">&#10094;</button> <button id="modal-picture-close"
+                        class="modal-close modal-picture__close">&#10006;</button>
+                </section>
+            </main>
+            <footer class="activities__footer"> <a href="#page-header"><button class="inner-link upward">Retour au
+                        début</button></a> </footer>
+        </section>
+    </main>
+    <footer id="page-footer" class="page-footer">
+        <header> </header>
+        <main>
+            <form class="contact-form"> </form>
+        </main>
+        <footer>
+            <ul class="social-link">
+                <li><button id="btn-contact">Contact</button></li>
+                <li><button id="btn-git">Mon github</button></li>
+            </ul>
+            <section id="modal-form-wrapper" class="modal-form-wrapper">
+                <header>
+                    <h4>Envoyer un message</h4> <span id="submit-error" class="error transparent"></span>
+                </header>
+                <section id="contact-form" class="contact-form">
+                    <div class="form-group"> <label for="email-field">Addresse email:</label> <input id="email-field"
+                            class="contact-form__email" type="email" name="email"
+                            placeholder="Saisissez votre adresse email ici" required> </div>
+                    <div class="form-group"> <label for="message-field">Votre message:</label> <textarea
+                            id="message-field" class="contact-form__message" name="message"
+                            placeholder="Ecrivez votre message ici" required></textarea> </div>
+                    <footer> <span id="message-length"></span>
+                        <div class="contact-form__buttons"> <button id="form-cancel"
+                                class="contact-form__cancel">Annuler</button> <button id="form-submit"
+                                class="contact-form__submit">Envoyer</button> </div>
+                    </footer>
+                </section>
+            </section>
+        </footer>
+    </footer>
+    <div id="modal-photo-overlay" class="hidden"></div>
+    <div id="modal-contact-overlay"></div>
+</body>
+
+</html>
+<script type="module" src="./ts.ab4ea1df.js"></script>
