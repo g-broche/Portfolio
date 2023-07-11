@@ -1,1 +1,236 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link rel="stylesheet" type="text/css" href="styles.5c1ee029.css"><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5"><title>Minigames</title><meta name="description" content="self introduction"><meta name="theme-color" content="#fff"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&family=Tenor+Sans&display=swap" rel="stylesheet"></head><body> <header id="page-header" class="page-header"> <nav class="header-nav"> <ul> <a href="index.html#introduction"> <li>Introduction</li> </a> <a href="index.html#portfolio"> <li>Portfolio</li> </a> <a href="index.html#about"> <li>A propos</li> </a> <a href="index.html#activities"> <li>Photos</li> </a> </ul> </nav> </header> <main id="minigames" class="about-project minigames"> <header> <h1>Projet "Minigames"</h1> <p class="project-into">Suite à l'apprentissage des bases de HTML, CSS et Javascript, le projet de formation suivant se basait sur la création d'une page web simulant un site permettant l'accès à différents jeux, dont l'un des jeux serait ensuite réalisé. Ce projet entièrement orienté front avait pour but principal d'expériementer avec les animations CSS et d'en apprendre davantage sur Javascript via la création du jeu. </p> </header> <main class="minigames__wrapper"> <section class="minigames__home"> <h2>La page d'accueil</h2> <p> La vocation principal de cette page était d'implémenter un design global proposé et de lui apporter certaines modifications visuelles en utilisant notamment des pseudos-classes dans le CSS ainsi que des animations. </p> <div class="gallery-screenshots screenshots"> <picture> <img src="CodeSnippet-homeAnimation.4b80e410.webp" alt="homeAnimation"> </picture> <picture> <img src="CodeSnippet-homeAnimation2.bb504d09.webp" alt="homeAnimation2"> </picture> </div> </section> <section class="minigames__pong"> <h2>Le jeu Pong</h2> <p> Reprenant le concept de Pong, le principe derrière le codage du jeu est d'utiliser une fonction qui englobera la logique de dérouement du jeu et qui sera appelé récursivement depuis la méthode requestAnimationFrame à laquelle elle fera appel. </p> <p>Ce projet aura été l'occasion d'apprendre beaucoup de connaissances en Javascript et d'être la première occasion d'experimenter de façon conséquente avec la programmation orientée objet.</p> <div> <p>Plusieurs points ont été particulièrement instructif durant ce projet parmis lesquels :</p> <ol> <li>Définir des objects et leur associer des méthodes et propriétés.</li> <li>Devoir gérer des interactions de joueurs sur plusieurs éléments tout en étant limité par le requestAnimationFrame comme déclencheur d'événements</li> <li>Ajouter une option de mouvement via souris et donc implémenter un throttle pour réduire le nombre d'appel de fonctions</li> </ol> </div> <article class="objects"> <h3>I.Objets et méthodes</h3> <p>Il existe plusieurs objets dans ce projet, notamment les barres droite et gauche, la balle et également un object "actionLog" servant à garder en mémoire les actions joueurs à repercuter sur lequel je reviendrai plus tard. </p> <p>Voici deux captures d'écran montrant une partie du code concernant les barres gauche et droite. Puisque les deux barres vont partager les mêmes méthodes, j'ai opté pour créé une constantes "Bar" contenant les méthodes communes puis je créé les deux barres via <b>Object.create</b> en utilisant l'objet Bar comme argument. Pour finir j'utilise la méthode <b>setInitialValues</b> défini dans "Bar" afin d'attribuer les propriété pour chaque barre. </p> <div class="gallery-screenshots objects__screenshots"> <picture> <img src="CodeSnippet-homeAnimation.4b80e410.webp" alt="homeAnimation"> </picture> <picture> <img src="CodeSnippet-homeAnimation2.bb504d09.webp" alt="homeAnimation2"> </picture> </div> </article> <article class="interactions"> <h3>II. Intéractions joueurs</h3> <p>Un problème qui fut rencontré relativement tôt du fait de la nature joueur solo du projet réside dans le conflit d'input. </p> <p>En effet, si on tente dé gérer l'intéractivité via des événements "keydown", un problème arrivera systématique du si deux touches sont pressées simultanément, ou pire si une touche reste activée. Dans une telle situation, l'action d'une touche bloquera l'action de la seconde.</p> <p> Afin de pallier a ce problème, la solution que j'ai implémenté consite à passer par un object <b>actionLog</b>. Le principe de ce dernier est d'associer des touches a une paire booléen/fonction, le booléen stock l'information de savoir si une touche a été pressée ou non et la fonction va quand à elle actionner la méthode a employé si la touche a été pressée. </p> <p>Lorsque la fonction récursive sera appelée à la frame suivante, la fonction <b>executeInputs</b> sera déclenchée et elle déclenchera les actions nécessaires correspondantes aux inputs ayant une valeur true associée. Cette méthodologie permet de passer outre un éventuel conflit d'inputs simultanés. </p><p> </p><p>Voici une capture d'écran montrant le code derrière cet objet <b>actionLog</b>. </p> <div class="gallery-screenshots interactions__screenshots"> <picture> <img src="CodeSnipet-inputs.317ddf52.webp" alt="actionLog"> </picture> </div> </article> <article class="mouse-movement"> <h3>III. Mouvement via souris</h3> <p>Conceptuellement cette partie là parait relativement simple; suivre les mouvement de la souris si le jeu n'est pas actuellement en pause puis répercuter la position verticale de la souris comme nouvelle position de la barre de droite. </p> <p>Cela pose cependant deux problèmes. Le premier est que des mouvements de souris rapides rendent le comportement de la barre complètement erratique et trop rapide pour que la transition CSS du déplacement de la barre parvienne à suivre le mouvement. Le second problème est la quantité de ressource consommée du fait que chaque micro-mouvement de souris déclencherait la fonction associée des dizaines de fois</p> <p>Afin de pallier à ces deux problèmes, ma solution a été d'implémenter un throttle avec un intervalle de 1000/60ms, ce délai correspondant à l'écart de temps séparant deux frames différentes (60 images par secondes) </p> <p>Voici une capture d'écran montrant le code de ce throttle.</p> <div class="gallery-screenshots mouse-movement__screenshots"> <picture> <img src="CodeSnipet-throttle.c61b2382.webp" alt="throttle"> </picture> </div> </article> </section> </main> </main> <footer id="page-footer" class="page-footer"> <header> </header> <main> <form class="contact-form"> </form> </main> <footer> <ul class="social-link"> <li>linkedin</li> <li>github</li> </ul> </footer> </footer> </body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/styles.dd855970.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+    <!-- Title -->
+    <title>Minigames</title>
+    <!-- Description -->
+    <meta name="description" content="self introduction">
+    <!-- Favicon -->
+    <meta name="theme-color" content="#fff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&family=Tenor+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="page-header" class="page-header">
+        <nav class="header-nav">
+            <ul>
+                <a href="/index.html#introduction">
+                    <li>Introduction</li>
+                </a>
+                <a href="/index.html#portfolio">
+                    <li>Portfolio</li>
+                </a>
+                <a href="/index.html#about">
+                    <li>A propos</li>
+                </a>
+                <a href="/index.html#activities">
+                    <li>Photos</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="minigames" class="about-project minigames">
+        <header>
+            <h1>Projet "Minigames"</h1>
+            <p class="project-into">Suite à l'apprentissage des bases de HTML, CSS et Javascript, le projet de formation
+                suivant se basait sur la création d'une
+                page web simulant un site permettant l'accès à différents jeux, dont l'un des jeux serait ensuite
+                réalisé.
+                Ce projet entièrement orienté front avait pour but principal d'expériementer avec les animations CSS et
+                d'en apprendre davantage
+                sur Javascript via la création du jeu.
+            </p>
+            <nav class="github-nav">
+                <a href="https://g-broche.github.io/miniGames/" target="_blank">voir la page fonctionnelle sur
+                    github</a>
+                <a href="https://github.com/g-broche/miniGames" target="_blank">voir le code source sur github</a>
+            </nav>
+
+        </header>
+        <main class="minigames__wrapper">
+            <section class="minigames__home">
+                <h2>La page d'accueil</h2>
+                <p> La vocation principal de cette page était d'implémenter un design global proposé et de lui apporter
+                    certaines modifications visuelles
+                    en utilisant notamment des pseudos-classes dans le CSS ainsi que des animations.
+                </p>
+                <div class="screenshots gallery-screenshots">
+                    <picture>
+                        <img src="/CodeSnippet-homeAnimation.8499a2de.webp" alt="homeAnimation">
+                    </picture>
+                    <picture>
+                        <img src="/CodeSnippet-homeAnimation2.dc1b8428.webp" alt="homeAnimation2">
+                    </picture>
+                </div>
+            </section>
+            <section class="minigames__pong">
+                <h2>Le jeu Pong</h2>
+                <p> Reprenant le concept de Pong, le principe derrière le codage du jeu est d'utiliser une fonction qui
+                    englobera la logique de dérouement du jeu
+                    et qui sera appelé récursivement depuis la méthode requestAnimationFrame à laquelle elle fera appel.
+                </p>
+                <p>Ce projet aura été l'occasion d'apprendre beaucoup de connaissances en Javascript et d'être la
+                    première occasion d'experimenter de façon conséquente avec la programmation orientée objet.</p>
+                <div>
+                    <p>Plusieurs points ont été particulièrement instructif durant ce projet parmis lesquels :</p>
+                    <ol>
+                        <li>Définir des objects et leur associer des méthodes et propriétés.</li>
+                        <li>Devoir gérer des interactions de joueurs sur plusieurs éléments tout en étant limité par le
+                            requestAnimationFrame comme déclencheur d'événements</li>
+                        <li>Ajouter une option de mouvement via souris et donc implémenter un throttle pour réduire le
+                            nombre d'appel de fonctions</li>
+                    </ol>
+                </div>
+
+                <article class="objects">
+                    <h3>I.Objets et méthodes</h3>
+                    <p>Il existe plusieurs objets dans ce projet, notamment les barres droite et gauche, la balle et
+                        également un object "actionLog" servant à garder en mémoire
+                        les actions joueurs à repercuter sur lequel je reviendrai plus tard.
+                    </p>
+                    <p>Voici deux captures d'écran montrant une partie du code concernant les barres gauche et droite.
+                        Puisque les deux barres
+                        vont partager les mêmes méthodes, j'ai opté pour créé une constantes "Bar" contenant les
+                        méthodes communes puis je créé les deux barres
+                        via <b>Object.create</b> en utilisant l'objet Bar comme argument. Pour finir j'utilise la
+                        méthode <b>setInitialValues</b> défini dans "Bar" afin d'attribuer les propriété pour chaque
+                        barre.
+
+                    </p>
+                    <div class="objects__screenshots gallery-screenshots">
+                        <picture>
+                            <img src="/CodeSnipet-barObject.35b54991.webp" alt="homeAnimation">
+                        </picture>
+                        <picture>
+                            <img src="/CodeSnipet-barObject2.22bb987d.webp" alt="homeAnimation2">
+                        </picture>
+                    </div>
+                </article>
+
+                <article class="interactions">
+                    <h3>II. Intéractions joueurs</h3>
+                    <p>Un problème qui fut rencontré relativement tôt du fait de la nature joueur solo du projet réside
+                        dans le conflit d'input.
+                    </p>
+                    <p>En effet, si on tente dé gérer l'intéractivité via des événements "keydown", un problème arrivera
+                        systématique du si deux touches sont
+                        pressées simultanément, ou pire si une touche reste activée. Dans une telle situation, l'action
+                        d'une touche bloquera l'action de la seconde.</p>
+
+                    <p> Afin de pallier a ce problème, la solution que j'ai implémenté consite à passer par un object
+                        <b>actionLog</b>. Le principe de ce dernier est d'associer
+                        des touches a une paire booléen/fonction, le booléen stock l'information de savoir si une touche
+                        a été pressée ou non et la fonction va quand à elle actionner
+                        la méthode a employé si la touche a été pressée.
+                    </p>
+
+                    <p>Lorsque la fonction récursive sera appelée à la frame suivante, la fonction <b>executeInputs</b>
+                        sera déclenchée et elle déclenchera les actions
+                        nécessaires correspondantes aux inputs ayant une valeur true associée. Cette méthodologie permet
+                        de
+                        passer outre un éventuel conflit d'inputs simultanés.
+                    </p><p>
+
+
+                    </p><p>Voici une capture d'écran montrant le code derrière cet objet <b>actionLog</b>.
+                    </p>
+                    <div class="interactions__screenshots gallery-screenshots">
+                        <picture>
+                            <img src="/CodeSnipet-inputs.c1bb6e97.webp" alt="actionLog">
+                        </picture>
+                    </div>
+                </article>
+
+                <article class="mouse-movement">
+                    <h3>III. Mouvement via souris</h3>
+                    <p>Conceptuellement cette partie là parait relativement simple; suivre les mouvement de la souris si
+                        le jeu n'est pas actuellement
+                        en pause puis répercuter la position verticale de la souris comme nouvelle position de la barre
+                        de droite. </p>
+
+                    <p>Cela pose cependant deux problèmes. Le premier est que des mouvements de souris rapides rendent
+                        le comportement de la barre complètement
+                        erratique et trop rapide pour que la transition CSS du déplacement de la barre parvienne à
+                        suivre le mouvement. Le second problème est la quantité de ressource
+                        consommée du fait que chaque micro-mouvement de souris déclencherait la fonction associée des
+                        dizaines de fois</p>
+
+                    <p>Afin de pallier à ces deux problèmes, ma solution a été d'implémenter un throttle avec un
+                        intervalle de 1000/60ms, ce délai correspondant
+                        à l'écart de temps séparant deux frames différentes (60 images par secondes)
+                    </p>
+
+                    <p>Voici une capture d'écran montrant le code de ce throttle.</p>
+                    <div class="mouse-movement__screenshots gallery-screenshots">
+                        <picture>
+                            <img src="/CodeSnipet-throttle.98f61714.webp" alt="throttle">
+                        </picture>
+                    </div>
+                </article>
+
+            </section>
+        </main>
+        <section id="modal-screenshot-container" class="modal-screenshot-container hidden">
+            <picture id="modal-screenshot-frame">
+                <img id="modal-screenshot-img" src="" alt="">
+            </picture>
+
+            <button id="modal-screenshot-close" class="modal-close">&#10006;</button>
+        </section>
+        <div id="modal-project-overlay" class="hidden"></div>
+    </main>
+
+    <footer id="page-footer" class="page-footer">
+        <ul class="social-link">
+            <li><button id="btn-contact">
+                    <div class="icon-container">
+                        <img src="/icons8-email-50.a3971f7d.webp" alt="mail icon">
+                    </div>
+                    Contact
+                </button></li>
+            <li><a href="https://github.com/g-broche"><button id="btn-git">
+                        <div class="icon-container">
+                            <img src="/icons8-github-50.fb5d343c.webp" alt="github icon">
+                        </div>
+                        Mon github
+                    </button></a>
+            </li>
+        </ul>
+        <section id="modal-form-wrapper" class="modal-form-wrapper hidden">
+            <header>
+                <h4>Envoyer un message</h4>
+                <span id="submit-error" class="error transparent"></span>
+            </header>
+
+            <section id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="email-field">Addresse email:</label>
+                    <input id="email-field" class="contact-form__email" type="email" name="email" placeholder="Saisissez votre adresse email ici" required="">
+                </div>
+                <div class="form-group">
+                    <label for="message-field">Votre message:</label>
+                    <textarea id="message-field" class="contact-form__message" name="message" placeholder="Ecrivez votre message ici" required=""></textarea>
+                </div>
+                <footer>
+                    <span id="message-length"></span>
+                    <div class="contact-form__buttons">
+                        <button id="form-cancel" class="contact-form__cancel">Annuler</button>
+                        <button id="form-submit" class="contact-form__submit">Envoyer</button>
+                    </div>
+                </footer>
+            </section>
+        </section>
+    </footer>
+    <div id="modal-contact-overlay" class="hidden"></div>
+</body>
+<script type="module" src="/project.a1347418.js"></script>
+<script type="module" src="/contactform.e839d376.js"></script>
+
+</html>
