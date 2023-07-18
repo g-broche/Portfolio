@@ -318,6 +318,19 @@ button.outer-link::after {
   .introduction__main {
     flex-direction: column;
   }
+  .introduction__photo-wrapper {
+    width: 60%;
+    max-width: 250px;
+  }
+  .introduction__photo-wrapper img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+    border-radius: 50%;
+  }
+  .introduction footer {
+    text-align: center;
+  }
 }
 .portfolio {
   width: 100%;
