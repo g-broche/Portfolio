@@ -21,6 +21,7 @@
     }
 
     &__main {
+        height: 100%;
         display: flex;
         flex-direction: column;
         gap: $gap-in-subsection;
@@ -32,6 +33,13 @@
         a {
             width: fit-content;
             align-self: center;
+            margin-top: auto;
         }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .portfolio-article {
+        width: 100%;
     }
 }

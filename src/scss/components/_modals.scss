@@ -10,6 +10,7 @@
     transform: translate(-50%, -50%);
     padding: 20px 40px;
     background-color: antiquewhite;
+    color: $color-dark-font;
     display: flex;
     flex-direction: column;
     gap: $gap-in-section;
@@ -58,13 +59,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-left: 20px;
         }
 
         &__buttons {
             align-self: flex-end;
             display: flex;
-            gap: 50px;
+            gap: 30px;
         }
 
         &__cancel {
@@ -86,13 +86,20 @@
 .modal-picture {
     position: fixed;
     z-index: 2;
-    width: 80%;
+    width: 65vw;
+    // max-height: 75vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     &__img {
+        width: 100%;
         border: 16px groove $color-picture-border;
+
+        img {
+            object-fit: cover;
+            max-height: 100%;
+        }
     }
 
     .arrow {
@@ -150,22 +157,35 @@
     justify-content: center;
     align-items: center;
 
-    picture {
-
-        width: fit-content;
-        height: fit-content;
-    }
-
     &__img-landscape {
-        object-fit: cover;
         width: 85vw;
         height: auto;
+
+        img {
+            object-fit: cover;
+            width: 100%
+        }
+    }
+
+    &__img-squarish {
+        height: fit-content;
+        width: fit-content;
+
+        img {
+            width: initial;
+            max-width: 85vw;
+            max-height: 85vh;
+        }
     }
 
     &__img-portrait {
-        object-fit: cover;
         height: 85vh;
         width: auto;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+        }
     }
 }
 
@@ -194,14 +214,85 @@
     z-index: 1;
 }
 
-.hidden {
-    display: none;
+#modal-project-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(1px);
+    z-index: 1;
 }
 
-.visible {
-    display: flex;
+@media only screen and (max-width:1250px) {
+    .modal-picture {
+
+        &__img {
+            border: 8px groove $color-picture-border;
+        }
+    }
 }
 
-.transparent {
-    opacity: 0;
+@media only screen and (max-width:800px) {
+    .modal-picture {
+        width: 80vw;
+
+        .arrow {
+            height: calc(($slider-navigation-size + 5px) * .75);
+            width: calc(($slider-navigation-size + 5px) * .75);
+            font-size: calc($slider-navigation-size * .75);
+        }
+    }
+
+    .modal-close {
+        height: calc($slider-close-size * 0.75);
+        width: calc($slider-close-size * 0.75);
+        font-size: calc($slider-close-size * 0.75);
+    }
+}
+
+@media only screen and (max-width:500px) {
+    .modal-picture {
+        width: 70vw;
+
+        .arrow {
+            height: calc(($slider-navigation-size + 5px) * .6);
+            width: calc(($slider-navigation-size + 5px) * .6);
+            font-size: calc($slider-navigation-size * .6);
+        }
+    }
+
+    .modal-close {
+        height: calc($slider-close-size * .6);
+        width: calc($slider-close-size * .6);
+        font-size: calc($slider-close-size * .6);
+    }
+}
+
+@media only screen and (max-height:560px) {
+    .modal-picture {
+        position: fixed;
+        z-index: 2;
+        max-width: none;
+        min-width: none;
+        max-height: 100%;
+
+
+        &__img {
+            object-fit: cover;
+            height: auto;
+            width: auto;
+
+            img {
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+    }
+
+    .modal-close {
+        transform: translate(175%, 50%);
+    }
 }

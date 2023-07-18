@@ -3,6 +3,7 @@ $background-light: #A7D2EB;
 
 $color-dark-font: black;
 $color-light-font: white;
+$color-cross-site-links : #0b9b2f;
 
 $color-picture-border: brown;
 $hyperlink-inner-button-background: #60AB73;
@@ -23,9 +24,7 @@ $padding-main-horizontal: 15%;
 $gap-in-section: 30px;
 $gap-in-subsection : 15px;
 
-$paddingX-in-section: 150px;
-$paddingY-in-section: 100px;
-$padding-in-section: 75px 100px 50px 100px;
+$padding-in-section: 75px 5% 50px 5%;
 
 $padding-article: 20px 20px;
 
@@ -36,3 +35,7 @@ $border-radius-big: 15px;
 
 $slider-navigation-size: 100px;
 $slider-close-size: 40px;
+
+// @media only screen and(max-width:1100) {
+//     $padding-in-section: 75px 100px 50px 100px;
+// }

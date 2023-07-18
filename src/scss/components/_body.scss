@@ -1,6 +1,8 @@
+@use '../components/elements/buttons' as *;
 @use '../components/page-header/' as *;
 @use '../components/page-main/' as *;
-@use '../components/elements/buttons' as *;
+@use '../components/page-footer/' as *;
+
 
 body {
     width: 100%;

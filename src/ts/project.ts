@@ -2,14 +2,16 @@
 
 const modalScreenshotContainer = document.getElementById("modal-screenshot-container");
 const modalCloseButton = document.getElementById("modal-screenshot-close");
+const modalPictureFrame = document.getElementById("modal-screenshot-frame")! as HTMLPictureElement;
 const modalPicture = document.getElementById("modal-screenshot-img")! as HTMLImageElement;
 
 const screenshots = document.querySelectorAll(".gallery-screenshots img")
 
-const modalOverlay = document.getElementById("modal-overlay");
+const modalOverlay = document.getElementById("modal-project-overlay");
 
 const modalClassnameLandscape = "modal-screenshot-container__img-landscape";
 const modalClassnamePortrait = "modal-screenshot-container__img-portrait";
+const modalClassnameSquarish = "modal-screenshot-container__img-squarish";
 
 /* ********** LOGIC CONST AND VARIABLES ********** */
 
@@ -20,9 +22,7 @@ modalCloseButton?.addEventListener("click", hideModalPictureContainer);
 modalOverlay?.addEventListener("click", hideModalPictureContainer);
 screenshots.forEach(screenshot => {
     screenshot.addEventListener("click", (event) => { displayModalScreenshot(event as MouseEvent) })
-})
-console.log(screenshots);
-console.log(modalPicture);
+});
 
 
 
@@ -37,12 +37,18 @@ async function displayModalScreenshot(event: MouseEvent) {
 }
 
 function toggleModalOrientationClasses(ratio: number) {
-    if (ratio >= 1) {
-        modalPicture.classList.add(modalClassnameLandscape);
-        if (modalPicture.classList.contains(modalClassnamePortrait)) { modalPicture.classList.remove(modalClassnamePortrait); }
+    if (ratio >= 1.5) {
+        modalPictureFrame.classList.add(modalClassnameLandscape);
+        if (modalPictureFrame.classList.contains(modalClassnamePortrait)) { modalPictureFrame.classList.remove(modalClassnamePortrait); }
+        if (modalPictureFrame.classList.contains(modalClassnameSquarish)) { modalPictureFrame.classList.remove(modalClassnameSquarish); }
+    } else if (ratio > .5 && ratio < 1.5) {
+        modalPictureFrame.classList.add(modalClassnameSquarish);
+        if (modalPictureFrame.classList.contains(modalClassnamePortrait)) { modalPictureFrame.classList.remove(modalClassnamePortrait); }
+        if (modalPictureFrame.classList.contains(modalClassnameLandscape)) { modalPictureFrame.classList.remove(modalClassnameLandscape); }
     } else {
-        modalPicture.classList.add(modalClassnamePortrait)
-        if (modalPicture.classList.contains(modalClassnameLandscape)) { modalPicture.classList.remove(modalClassnameLandscape); }
+        modalPictureFrame.classList.add(modalClassnamePortrait)
+        if (modalPictureFrame.classList.contains(modalClassnameLandscape)) { modalPictureFrame.classList.remove(modalClassnameLandscape); }
+        if (modalPictureFrame.classList.contains(modalClassnameSquarish)) { modalPictureFrame.classList.remove(modalClassnameSquarish); }
     }
 }
 

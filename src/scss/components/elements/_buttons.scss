@@ -5,6 +5,7 @@ $hyperlink-inner-button-width: 300px;
 
 button {
     font-size: $font-size-common;
+    max-width: 80vw !important;
 }
 
 button.inner-link {

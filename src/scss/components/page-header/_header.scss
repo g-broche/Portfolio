@@ -1,9 +1,93 @@
 @use '../../abstract/' as *;
 
+$burger-icon-height: 64px;
+$burger-icon-width: 64px;
+
 .page-header {
-    height: 50px;
+
     width: 100%;
     display: flex;
     justify-content: center;
     background-color: $background-dark;
+
+    .header-nav {
+        display: flex;
+        align-items: center;
+
+        ul {
+            display: flex;
+            justify-content: center;
+
+            li {
+                list-style: none;
+                padding: 10px 25px;
+                font-size: $font-size-nav;
+                color: $color-light-font;
+                background-color: $background-dark;
+                transition: background-color 0.6s ease;
+            }
+
+            li:hover {
+                background-color: $background-light;
+            }
+        }
+
+    }
+
+    .burger-menu {
+        display: none;
+        height: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .page-header {
+        display: block;
+
+        .header-nav {
+            display: none;
+        }
+    }
+
+    .page-header {
+        .burger-menu {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+
+
+            &__button {
+                height: $burger-icon-height;
+                width: $burger-icon-width;
+            }
+
+            &__nav {
+                position: absolute;
+                top: $burger-icon-height;
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+
+                    li {
+                        list-style: none;
+                        padding: 10px 25px;
+                        font-size: $font-size-nav;
+                        color: $color-light-font;
+                        background-color: $background-dark;
+                        transition: background-color 0.6s ease;
+                        text-align: center;
+                    }
+
+                    li:hover {
+                        background-color: $background-light;
+                    }
+                }
+
+            }
+        }
+    }
 }

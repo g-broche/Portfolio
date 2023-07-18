@@ -1,0 +1,32 @@
+@use '../../abstract/' as *;
+
+.page-footer {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: $background-dark;
+    font-size: $font-size-nav;
+    color: $color-light-font;
+
+    ul {
+        display: flex;
+        gap: 100px;
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .page-footer {
+        ul {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+}

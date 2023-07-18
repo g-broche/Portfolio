@@ -1,2 +1,14 @@
 @use '../src/scss/abstract/' as *;
 @use '../src/scss/components/' as *;
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+
+.transparent {
+    opacity: 0;
+}

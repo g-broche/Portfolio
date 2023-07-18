@@ -35,6 +35,27 @@
                 </a>
             </ul>
         </nav>
+        <div id="burger-menu" class="burger-menu">
+            <button id="burger-button" class="burger-menu__button">
+                <img src="./src/assets/logo/burger-menu.svg" alt="burger-icon">
+            </button>
+            <nav class="burger-menu__nav hidden">
+                <ul>
+                    <a href="./index.html/#introduction">
+                        <li>Introduction</li>
+                    </a>
+                    <a href="./index.html/#portfolio">
+                        <li>Portfolio</li>
+                    </a>
+                    <a href="./index.html/#about">
+                        <li>A propos</li>
+                    </a>
+                    <a href="./index.html/#activities">
+                        <li>Photos</li>
+                    </a>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main id="newsProject" class="about-project newsProject">
@@ -48,6 +69,9 @@
                 front-end
                 traitera par la suite pour afficher le contenu.
             </p>
+            <nav class="github-nav">
+                <a href="https://github.com/g-broche/newsProject" target="_blank">voir le code source sur github</a>
+            </nav>
         </header>
         <main class="newsProject__wrapper">
             <section class="newsProject__home">
@@ -181,38 +205,65 @@
                         </picture>
                     </div>
                 </article>
-
             </section>
         </main>
         <section id="modal-screenshot-container" class="modal-screenshot-container hidden">
-            <picture>
+            <picture id="modal-screenshot-frame">
                 <img id="modal-screenshot-img" src="" alt="" />
             </picture>
 
             <button id="modal-screenshot-close" class="modal-close">&#10006;</button>
         </section>
-        <div id="modal-overlay" class="hidden"></div>
+        <div id="modal-project-overlay" class="hidden"></div>
     </main>
 
     <footer id="page-footer" class="page-footer">
-        <header>
+        <ul class="social-link">
+            <li><button id="btn-contact">
+                    <div class="icon-container">
+                        <img src="./src/assets/logo/icons8-email-50.webp" alt="mail icon">
+                    </div>
+                    Contact
+                </button></li>
+            <li><a href="https://github.com/g-broche"><button id="btn-git">
+                        <div class="icon-container">
+                            <img src="./src/assets/logo/icons8-github-50.webp" alt="github icon">
+                        </div>
+                        Mon github
+                    </button></a>
+            </li>
+        </ul>
+        <section id="modal-form-wrapper" class="modal-form-wrapper hidden">
+            <header>
+                <h4>Envoyer un message</h4>
+                <span id="submit-error" class="error transparent"></span>
+            </header>
 
-        </header>
-        <main>
-            <form class="contact-form">
-
-            </form>
-        </main>
-
-        <footer>
-            <ul class="social-link">
-                <li>linkedin</li>
-                <li>github</li>
-            </ul>
-        </footer>
+            <section id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="email-field">Addresse email:</label>
+                    <input id="email-field" class="contact-form__email" type="email" name="email"
+                        placeholder="Saisissez votre adresse email ici" required>
+                </div>
+                <div class="form-group">
+                    <label for="message-field">Votre message:</label>
+                    <textarea id="message-field" class="contact-form__message" name="message"
+                        placeholder="Ecrivez votre message ici" required></textarea>
+                </div>
+                <footer>
+                    <span id="message-length"></span>
+                    <div class="contact-form__buttons">
+                        <button id="form-cancel" class="contact-form__cancel">Annuler</button>
+                        <button id="form-submit" class="contact-form__submit">Envoyer</button>
+                    </div>
+                </footer>
+            </section>
+        </section>
     </footer>
-
+    <div id="modal-contact-overlay" class="hidden"></div>
 </body>
 
 </html>
 <script type="module" src="./src/ts/project.ts"></script>
+<script type="module" src="./src/ts/burger.ts"></script>
+<script type="module" src="./src/ts/contactform.ts"></script>

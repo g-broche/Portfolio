@@ -29,6 +29,7 @@
 
         &__container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
         }
 
@@ -63,5 +64,12 @@
             color: $color-light-font;
         }
     }
+}
 
+@media only screen and (max-width: 900px) {
+    .learning-projects {
+        &__container {
+            gap: 20px;
+        }
+    }
 }
