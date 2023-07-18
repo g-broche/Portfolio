@@ -909,8 +909,8 @@ body {
   padding: 3px 2px 3px 10px;
 }
 .modal-form-wrapper .contact-form footer {
-  margin-top: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
@@ -1075,6 +1075,18 @@ body {
   .modal-picture__img {
     border: 8px groove brown;
   }
+  .modal-form-wrapper {
+    width: 65%;
+    padding: 20px 5%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .modal-form-wrapper {
+    width: 80%;
+  }
+  .modal-form-wrapper .contact-form__email {
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 800px) {
   .modal-picture {
@@ -1089,6 +1101,14 @@ body {
     height: 30px;
     width: 30px;
     font-size: 30px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .modal-form-wrapper {
+    width: 95%;
+  }
+  .modal-form-wrapper .contact-form__email {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 500px) {
